@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleSushi
 {
-    interface IChangeItem
+    public interface IItem
     {
+        string Name { get;}
+        double Price { get;}
         void ChangePrice(double newPrice);
+        void ChangeName(string name);
     }
 }

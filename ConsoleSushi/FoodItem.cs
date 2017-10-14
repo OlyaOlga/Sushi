@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 namespace ConsoleSushi
 {
     public class FoodItem:
-        IChangeItem
+        IItem
     {
         public string Name { get; private set; }
         public double Price { get; private set; }
 
+        public FoodItem()
+        {
+            
+        }
         public FoodItem(string name, double price)
         {
             Name = name;
@@ -22,6 +26,11 @@ namespace ConsoleSushi
         public void ChangePrice(double newPrice)
         {
             Price = newPrice;
+        }
+
+        public void ChangeName(string name)
+        {
+            Name = name;
         }
 
         public override bool Equals(object obj)
@@ -41,7 +50,7 @@ namespace ConsoleSushi
 
         public override string ToString()
         {
-            return $"Name: {Name}, Price: {Price}";
+            return $"Food item name: {Name}, Price: {Price}";
         }
     }
 }

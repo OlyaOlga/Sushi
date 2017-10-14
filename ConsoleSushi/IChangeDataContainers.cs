@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleSushi
 {
-    interface IChangeDataContainers<T>
+    public interface IChangeDataContainers<T>
     {
         void AddItem(T item);
         void RemoveItem(T item);

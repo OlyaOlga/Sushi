@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleSushi
 {
-    interface IFileAction
+    public interface IFileActions 
     {
-        void ReadData();
-        void WriteData();
+        void ReadData(string source);
+        void WriteData(string destination);
     }
 }

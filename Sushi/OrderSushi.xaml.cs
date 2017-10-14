@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ConsoleSushi;
 
 namespace Sushi
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OrderSushi.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderSushi : Window
     {
-        public CashRegister cashRegister { get; set; }
-
-        public MainWindow()
+        public OrderSushi()
         {
             InitializeComponent();
-            cashRegister = new CashRegister();
-            DataContext = cashRegister;
         }
-
-
     }
 }

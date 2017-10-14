@@ -10,15 +10,9 @@ namespace ConsoleSushi
     {
         static void Main(string[] args)
         {
-            SushiItem item = new SushiItem("123", 12.3);
-            AvaliableSushi sushi = new AvaliableSushi();
-            sushi.AddItem(item);
-            SushiItem anotherItem = new SushiItem("124", 12.3);
-            sushi.AddItem(item);
-            sushi.AddItem(item);
-            sushi.AddItem(anotherItem);
-            Console.WriteLine(sushi);
-            Console.ReadKey();
+           CashRegister register = new CashRegister();
+           Console.WriteLine(register.FoodItemList.ToString());
+           Console.ReadKey();
         }
     }
 }

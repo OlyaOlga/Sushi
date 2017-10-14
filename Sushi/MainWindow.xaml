@@ -1,14 +1,15 @@
-﻿<Window x:Class="Sushi.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sushi"
+        xmlns:Properties="clr-namespace:Sushi.Properties" x:Class="Sushi.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="179,222,0,0" VerticalAlignment="Top" Width="108" Height="33" Click="button_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="43" Margin="112,43,0,0" TextWrapping="Wrap" Text="{Binding item}" VerticalAlignment="Top" Width="175"/>
+        <Button x:Name="BuyProducts" Content="Buy Products" HorizontalAlignment="Left" Margin="330,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
+        <Button x:Name="AcceptOrder" Content="Accept Order" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
 
     </Grid>
 </Window>

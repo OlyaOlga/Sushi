@@ -7,20 +7,29 @@ using System.Threading.Tasks;
 namespace ConsoleSushi
 {
    public class SushiItem:
-        IChangeItem
+        IItem
     {
-        public string SushiName { get;  private set; }      
+        public string Name { get;  private set; }      
         public double Price { get; private set; }
 
-        public SushiItem(string sushiName, double price)
+       public SushiItem()
+       {
+           
+       }
+        public SushiItem(string name, double price)
         {
-            SushiName = sushiName;
+            Name = name;
             Price = price;
         }
         public void ChangePrice(double newPrice)
         {
             Price = newPrice;
         }
+
+       public void ChangeName(string name)
+       {
+           Name = name;
+       }
 
        public override int GetHashCode()
        {
@@ -29,17 +38,17 @@ namespace ConsoleSushi
 
        public override string ToString()
         {
-            return $"Name: {SushiName}, Price: {Price}";
+            return $"Sushi name: {Name}, Price: {Price}";
         }
  
-        public override bool Equals(object item)
+       public override bool Equals(object item)
         {
             SushiItem sushi =  item as SushiItem;
             if (sushi == null)
             {
                 return false;
             }
-            return SushiName.Equals(sushi.SushiName)&&Price.Equals(sushi.Price);
+            return Name.Equals(sushi.Name)&&Price.Equals(sushi.Price);
         }
     }
 }
