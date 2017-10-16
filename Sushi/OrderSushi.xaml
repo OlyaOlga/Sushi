@@ -34,8 +34,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ChangePriceButton" Content="ChangePrice" HorizontalAlignment="Left" Margin="35,334,0,0" VerticalAlignment="Top" Width="75" Command ="{Binding ChangeMenuPriceCommand}"  Click="ChangePriceButton_Click"/>
-        <Button x:Name="RemoveItemButton" Content="RemoveItem" HorizontalAlignment="Left" Margin="133,334,0,0" VerticalAlignment="Top" Width="87" Command ="{Binding MyDeleteCommand}"  />
+        <Button x:Name="ChangePriceButton" Content="ChangePrice" HorizontalAlignment="Left" Margin="35,334,0,0" VerticalAlignment="Top" Width="75" Command ="{Binding MenuChangeItemPriceCommand}"/>
+        <Button x:Name="RemoveItemButton" Content="RemoveItem" HorizontalAlignment="Left" Margin="133,334,0,0" VerticalAlignment="Top" Width="87" IsEnabled="True" Command="{Binding MenuItemDeleteCommand}"/>
 
     </Grid>
 </Window>

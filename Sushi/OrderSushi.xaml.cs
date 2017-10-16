@@ -43,7 +43,7 @@ namespace Sushi
         {
             if ((listView.SelectedItem as SushiItem) !=null)
             {
-                (listView.SelectedItem as SushiItem).ChangePrice(200);
+                
             }
         }
 

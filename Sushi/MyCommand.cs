@@ -8,28 +8,41 @@ using ConsoleSushi;
 
 namespace Sushi
 {
-    class MyDeleteCommand:
+    class MenuCommand:
         ICommand
     {
+        private Action _currentAction;
         private CashRegisterView _cashRegisterView;
 
-        public MyDeleteCommand(CashRegisterView cashRegisterView)
+        public MenuCommand(CashRegisterView cashRegisterView, Action currentAction)
         {
             _cashRegisterView = cashRegisterView;
+            _currentAction = currentAction;
         }
         public bool CanExecute(object parameter)
         {
-            return ((_cashRegisterView.orderSushi.listView.SelectedItem as SushiItem) != null);
+            return (_cashRegisterView.orderSushi.listView.SelectedIndex  != -1);
         }
 
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
             {
-                _cashRegisterView.cashRegister.Menu.RemoveItem(_cashRegisterView.orderSushi.listView.SelectedItem as SushiItem);
+                _currentAction();
+                int val = _cashRegisterView.orderSushi.listView.SelectedIndex;
             }
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
+        }
     }
 }
