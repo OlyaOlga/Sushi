@@ -39,19 +39,14 @@ namespace Sushi
             Resources["CurrentOrder"] = ((CashRegisterView)DataContext).cashRegister.CurrentSushiOrder.Order;
         }
 
-        private void ChangePriceButton_Click(object sender, RoutedEventArgs e)
-        {
-            if ((listView.SelectedItem as SushiItem) !=null)
-            {
-                
-            }
-        }
 
-        private void RemoveItemButton_Click(object sender, RoutedEventArgs e)
+
+        private void ListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((listView.SelectedItem as SushiItem) != null)
+            Console.WriteLine( listView.SelectedIndex);
+            foreach (var addedItem in e.AddedItems)
             {
-                ((CashRegisterView) DataContext).cashRegister.Menu.RemoveItem(listView.SelectedItem as SushiItem);
+                Console.WriteLine("\t"+addedItem);
             }
         }
     }

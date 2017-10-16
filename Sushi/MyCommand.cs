@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using ConsoleSushi;
 
@@ -29,7 +30,6 @@ namespace Sushi
             if (CanExecute(parameter))
             {
                 _currentAction();
-                int val = _cashRegisterView.orderSushi.listView.SelectedIndex;
             }
         }
 

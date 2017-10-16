@@ -19,6 +19,7 @@ namespace Sushi
         public CashRegisterView()
         {
             cashRegister = new CashRegister();
+            MenuChangeItemPriceCommand = new MenuCommand(this, ChangeMenuItemPrice);
         }
 
         public ICommand MenuItemDeleteCommand
@@ -26,14 +27,12 @@ namespace Sushi
             get { return new MenuCommand(this, RemoveMenuItem); }
         }
 
-        public ICommand MenuChangeItemPriceCommand
-        {
-            get
-            {
-                return new MenuCommand(this, ChangeMenuItemPrice);
-            }
-        }
+        public ICommand MenuChangeItemPriceCommand { get; }
 
+        public ICommand MoveEnteredPriceCommand
+        {
+            get { return new MenuCommand(this, MoveEnteredPrice); }
+        }
         public void RemoveMenuItem()
         {
             cashRegister.Menu.RemoveItem(orderSushi.listView.SelectedItem as SushiItem);
@@ -41,7 +40,19 @@ namespace Sushi
 
         public void ChangeMenuItemPrice()
         {
-            (orderSushi.listView.SelectedItem as SushiItem).ChangePrice(200);
+            //orderSushi.EnteredValueStackPannel.Visibility = System.Windows.Visibility.Visible;
+            (orderSushi.listView.SelectedItem as SushiItem)?.ChangePrice(200);
         }
+
+        public void MoveEnteredPrice()
+        {
+            uint newPrice;
+            if (uint.TryParse(orderSushi.EnteredValueTextBox.Text, out newPrice))
+            {
+                (orderSushi.listView.SelectedItem as SushiItem).ChangePrice(newPrice);
+            }
+        }
+       
+
     }
 }
