@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,11 @@ namespace ConsoleSushi
         IFileActions,
         IChangeDataContainers<T> where T :IItem, new()
     {
-        public List<T> AllPossibleItems { get; }
+        public ObservableCollection<T> AllPossibleItems { get; }
 
         public PossibleVariants()
         {
-            AllPossibleItems = new List<T>();
+            AllPossibleItems = new ObservableCollection<T>();
         }
 
         public void AddItem(T item)

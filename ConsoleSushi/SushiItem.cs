@@ -1,20 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleSushi.Annotations;
 
 namespace ConsoleSushi
 {
    public class SushiItem:
-        IItem
-    {
-        public string Name { get;  private set; }      
-        public double Price { get; private set; }
+        IItem,
+        INotifyPropertyChanged
+   {
+       private string _name;
+       private double _price;
+
+       public string Name
+       {
+           get
+           {
+               return _name;
+           }
+           private set
+           {
+               _name = value;
+               OnPropertyChanged("Name");
+           }
+       }
+
+       public double Price
+       {
+           get { return _price; }
+           private set
+           {
+               _price = value;
+               OnPropertyChanged("Price");
+           }
+       }
 
        public SushiItem()
        {
-           
        }
         public SushiItem(string name, double price)
         {
@@ -50,5 +76,13 @@ namespace ConsoleSushi
             }
             return Name.Equals(sushi.Name)&&Price.Equals(sushi.Price);
         }
-    }
+
+       public event PropertyChangedEventHandler PropertyChanged;
+
+       [NotifyPropertyChangedInvocator]
+       protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+       {
+           PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+       }
+   }
 }

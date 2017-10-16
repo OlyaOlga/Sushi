@@ -52,6 +52,7 @@
     <Compile Include="IFileAction.cs" />
     <Compile Include="CurrentOrder.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SushiItem.cs" />
   </ItemGroup>

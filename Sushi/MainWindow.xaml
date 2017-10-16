@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="BuyProducts" Content="Buy Products" HorizontalAlignment="Left" Margin="330,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <Button x:Name="AcceptOrder" Content="Accept Order" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
+        <Button x:Name="AcceptOrder" Content="Accept Order" HorizontalAlignment="Left" Margin="330,250,0,0" VerticalAlignment="Top" Width="115" Height="43" Click="DoOrder_Click"/>
+        <Button x:Name="BuyProducts" Content="Buy Products" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
 
     </Grid>
 </Window>

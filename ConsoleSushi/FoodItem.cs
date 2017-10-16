@@ -1,16 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleSushi.Annotations;
 
 namespace ConsoleSushi
 {
     public class FoodItem:
-        IItem
+        IItem,
+        INotifyPropertyChanged
     {
-        public string Name { get; private set; }
+        private string _name;
+        private double _price;
+        public string Name {
+            get { return _name; }
+            private set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            } }
         public double Price { get; private set; }
 
         public FoodItem()
@@ -51,6 +63,14 @@ namespace ConsoleSushi
         public override string ToString()
         {
             return $"Food item name: {Name}, Price: {Price}";
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

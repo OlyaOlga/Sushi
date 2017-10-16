@@ -21,15 +21,22 @@ namespace Sushi
     /// </summary>
     public partial class MainWindow : Window
     {
-        public CashRegister cashRegister { get; set; }
-
+        public CashRegisterView currentView;
         public MainWindow()
         {
             InitializeComponent();
-            cashRegister = new CashRegister();
-            DataContext = cashRegister;
+            currentView = new CashRegisterView();
+            currentView.mainWindow = this;
+            DataContext = currentView;
         }
 
-
+        private void DoOrder_Click(object sender, RoutedEventArgs e)
+        {
+            OrderSushi sushi = new OrderSushi();
+            sushi.DataContext = this.DataContext;
+            sushi.InitializeChosenElements();
+            currentView.orderSushi = sushi;
+            sushi.ShowDialog();
+        }
     }
 }

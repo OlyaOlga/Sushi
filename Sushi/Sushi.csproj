@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CashRegisterView.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -73,6 +74,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyCommand.cs" />
     <Compile Include="OrderSushi.xaml.cs">
       <DependentUpon>OrderSushi.xaml</DependentUpon>
     </Compile>
