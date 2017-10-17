@@ -12,7 +12,7 @@ namespace ConsoleSushi
         IFileActions,
         IChangeDataContainers<T> where T :IItem, new()
     {
-        public ObservableCollection<T> AllPossibleItems { get; }
+        public ObservableCollection<T> AllPossibleItems { get; set; }
 
         public PossibleVariants()
         {

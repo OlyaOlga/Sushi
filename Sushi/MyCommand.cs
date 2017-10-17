@@ -12,10 +12,10 @@ namespace Sushi
     class MenuCommand:
         ICommand
     {
-        private Action _currentAction;
+        private Action<int> _currentAction;
         private CashRegisterView _cashRegisterView;
 
-        public MenuCommand(CashRegisterView cashRegisterView, Action currentAction)
+        public MenuCommand(CashRegisterView cashRegisterView, Action<int> currentAction)
         {
             _cashRegisterView = cashRegisterView;
             _currentAction = currentAction;
@@ -27,9 +27,15 @@ namespace Sushi
 
         public void Execute(object parameter)
         {
-            if (CanExecute(parameter))
+            if (parameter != null)
             {
-                _currentAction();
+                Console.WriteLine("Parametr is not null");
+                Console.WriteLine("Parametr equls to " + parameter);
+                _currentAction((int) parameter);
+            }
+            else
+            {
+                Console.WriteLine("Paramtr is null");
             }
         }
 

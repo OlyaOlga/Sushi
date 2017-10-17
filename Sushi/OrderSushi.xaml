@@ -11,7 +11,9 @@
             <ColumnDefinition Width="259*"/>
             <ColumnDefinition Width="533*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="listView" SelectionMode="Single" SelectionChanged="ListView_OnSelectionChanged" HorizontalAlignment="Left" Height="300" Margin="10,29,0,0" VerticalAlignment="Top" Width="210"  ItemsSource="{Binding cashRegister.Menu.AllPossibleItems}">
+        <ListView x:Name="listView" SelectionMode="Single" SelectionChanged="ListView_OnSelectionChanged"
+                  HorizontalAlignment="Left" Height="300" Margin="10,29,0,0" VerticalAlignment="Top"
+                  Width="210"  ItemsSource="{Binding cashRegister.Menu.AllPossibleItems}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header ="Name" Width="120" DisplayMemberBinding="{Binding Name }"/>
@@ -34,14 +36,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ChangePriceButton" Content="ChangePrice" HorizontalAlignment="Left" Margin="35,334,0,0" VerticalAlignment="Top" Width="75" Command ="{Binding MenuChangeItemPriceCommand}"/>
-        <Button x:Name="RemoveItemButton" Content="RemoveItem" HorizontalAlignment="Left" Margin="133,334,0,0" VerticalAlignment="Top" Width="87" IsEnabled="True" Command="{Binding MenuItemDeleteCommand}"/>
+        <Button x:Name="ChangePriceButton" Content="ChangePrice" HorizontalAlignment="Left"
+                Margin="35,334,0,0" VerticalAlignment="Top" Width="75" Command ="{Binding MenuChangeItemPriceCommand}"
+                CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
+        <Button x:Name="RemoveItemButton" Content="RemoveItem" HorizontalAlignment="Left" Margin="133,334,0,0" VerticalAlignment="Top" Width="87" IsEnabled="True"
+                Command="{Binding MenuItemDeleteCommand}"  CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
        
         <StackPanel Name ="EnteredValueStackPannel" HorizontalAlignment="Left" Orientation="Horizontal" Height="62" Margin="79,407,0,0" VerticalAlignment="Top" Width="481" Grid.ColumnSpan="2" Visibility="Hidden">
             <TextBlock Margin="10" FontSize="16" Width="154">Enter new value here:</TextBlock>
             <TextBox Name="EnteredValueTextBox" Width="125" Margin="0,10"></TextBox>
-            <Button Margin="10" Width="87" Content="Ok" Command="{Binding MoveEnteredPrice}"/>
-            <Button Margin="10" Width="87" Content="Cancel"/>
+            <Button Margin="10" Width="87" Content="Ok" Command="{Binding MovePriceCommand}"  CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
+            <Button Margin="10" Width="87" Content="Cancel" Command="{Binding CancelEnteringPriceCommand}"   CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
         </StackPanel>
 
 
