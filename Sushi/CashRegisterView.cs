@@ -24,6 +24,9 @@ namespace Sushi
             MenuItemDeleteCommand = new MenuCommand(this, RemoveMenuItem);
             MovePriceCommand = new MenuCommand(this, MoveEnteredPrice);
             CancelEnteringPriceCommand = new MenuCommand(this, CancelEnteringPrice);
+            DoOrderCommand = new MenuCommand(this, AddCurrentItemToOrder);
+            DeleteCurrentOrderItemCommand = new MenuCommand(this, DeleteCurrentOrderItem);
+            ChangeOrderCommand = new MenuCommand(this, ChangeCurrentOrder);
         }
 
         public ICommand MenuChangeItemPriceCommand { get; }
@@ -33,6 +36,13 @@ namespace Sushi
         public ICommand MovePriceCommand { get; }
 
         public ICommand CancelEnteringPriceCommand { get;}
+
+        public ICommand DoOrderCommand { get; }
+
+        public ICommand ChangeOrderCommand { get; }
+
+        public ICommand DeleteCurrentOrderItemCommand { get; }
+
 
         public void RemoveMenuItem(int index)
         {
@@ -62,7 +72,35 @@ namespace Sushi
             orderSushi.EnteredValueTextBox.Text = string.Empty;
             orderSushi.EnteredValueStackPannel.Visibility = Visibility.Hidden;
         }
-       
 
+        public void AddCurrentItemToOrder(int index)
+        {
+            InputValueWindow currInputWind = new InputValueWindow(this);
+            currInputWind.ShowDialog();
+            if (Q != null)
+            {
+                SushiItem itemToAdd = new SushiItem(cashRegister.Menu.AllPossibleItems[index].Name,
+                cashRegister.Menu.AllPossibleItems[index].Price);
+                cashRegister.CurrentSushiOrder.Order.Add(new OrderEntity<SushiItem>(itemToAdd, (uint)Q));
+            }
+        }
+
+        public uint? Q { get; set; }
+
+        public void DeleteCurrentOrderItem(int index)
+        {
+            cashRegister.CurrentSushiOrder.Order.Remove(cashRegister.CurrentSushiOrder.Order[index]);
+            Console.WriteLine(index);
+        }
+
+        public void ChangeCurrentOrder(int index)
+        {
+            InputValueWindow currInputWind = new InputValueWindow(this);
+            currInputWind.ShowDialog();
+            if (Q != null)
+            {
+                cashRegister.CurrentSushiOrder.ChangeOrder(cashRegister.CurrentSushiOrder.Order[index], (uint)Q);
+            }
+        }
     }
 }

@@ -42,6 +42,18 @@ namespace SushiTest
             sushi.RemoveItem(toAddFirst);
             Assert.AreEqual(sushi.AllPossibleItems.Count, 1);
         }
+
+        [TestMethod]
+        public void TestOrderEntityConstructor()
+        {
+            string sushiName = "sushiName";
+            double price = 10;
+            SushiItem item = new SushiItem(sushiName, price);
+            uint quantity = 30;
+            OrderEntity<SushiItem> testEntity = new OrderEntity<SushiItem>(item, quantity);
+            Assert.IsTrue(item.Equals(testEntity.Value)&&quantity.Equals(testEntity.Quantity));
+        }
+
         [TestMethod]
         public void TestAddOrderItemFromOrder()
         {
@@ -49,8 +61,9 @@ namespace SushiTest
             SushiItem item = new SushiItem("name", 12.8);
             uint quantity = 12;
             myOrder.OrderSomething(item, quantity);
-            Assert.IsTrue(myOrder.Order.ContainsKey(item) && myOrder.Order.ContainsValue(quantity));
+            Assert.IsTrue(myOrder.Order.Contains(new OrderEntity<SushiItem>(item, quantity)));
         }
+        
         [TestMethod]
         public void TestCancelOrder()
         {
@@ -58,9 +71,11 @@ namespace SushiTest
            SushiItem item = new SushiItem("name", 12.8);
            uint quantity = 12;
            order.OrderSomething(item, quantity);
-           order.CancelOrder(item);
+           OrderEntity<SushiItem> thisOrder  =new OrderEntity<SushiItem>(item, quantity);
+           order.CancelOrder(thisOrder);
            Assert.IsTrue(order.TotalSum==0.00 && order.Order.Count == 0);
         }
+        
         [TestMethod]
         public void TestChangeOrder()
         {
@@ -69,9 +84,10 @@ namespace SushiTest
             SushiItem item = new SushiItem("name", price);
             uint quantity = 12;
             myOrder.OrderSomething(item, quantity);
-            ++quantity;
-            myOrder.ChangeOrder(item, quantity);
-            Assert.AreEqual(myOrder.TotalSum, item.Price* quantity);
+            uint newQuantity = quantity +1;
+            myOrder.ChangeOrder(new OrderEntity<SushiItem>(item, quantity), newQuantity);
+            Assert.AreEqual(myOrder.TotalSum, item.Price* newQuantity);
         }
+        
     }
 }

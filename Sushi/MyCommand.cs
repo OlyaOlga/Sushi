@@ -22,7 +22,12 @@ namespace Sushi
         }
         public bool CanExecute(object parameter)
         {
-            return (_cashRegisterView.orderSushi.listView.SelectedIndex  != -1);
+            if (parameter == null)
+            {
+                return false;
+            }
+            int index = (int)parameter; 
+            return (index  != -1);
         }
 
         public void Execute(object parameter)

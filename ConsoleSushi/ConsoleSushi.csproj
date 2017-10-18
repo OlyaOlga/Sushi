@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="CashRegister.cs" />
     <Compile Include="IOrder.cs" />
+    <Compile Include="OrderEntity.cs" />
     <Compile Include="PossibleVariants.cs" />
     <Compile Include="FoodItem.cs" />
     <Compile Include="IChangeDataContainers.cs" />

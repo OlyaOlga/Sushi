@@ -26,21 +26,6 @@ namespace Sushi
             InitializeComponent();
         }
 
-        public void InitializeChosenElements()
-        {
-            try
-            {
-                ((CashRegisterView) DataContext).cashRegister.CurrentSushiOrder.Order.Add(
-                    new SushiItem("sushiTasty", 50),
-                    100);
-            }
-            catch(Exception)
-            { }
-            Resources["CurrentOrder"] = ((CashRegisterView)DataContext).cashRegister.CurrentSushiOrder.Order;
-        }
-
-
-
         private void ListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Console.WriteLine( listView.SelectedIndex);

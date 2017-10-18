@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleSushi
 {
-    public interface IOrder<T>
+    public interface IOrder<T> where T: IItem
     {
         void OrderSomething(T value, uint quantity);
-        void CancelOrder(T value);
-        void ChangeOrder(T value, uint quantity);
+        void CancelOrder(OrderEntity<T> value);
+        void ChangeOrder(OrderEntity<T> item, uint newQuantity);
     }
 }

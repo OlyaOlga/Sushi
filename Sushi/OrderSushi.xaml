@@ -21,18 +21,18 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="5,329,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="20"/>
-        <Button x:Name="ChangeButton" Content="Change" Grid.Column="1" HorizontalAlignment="Left" Margin="118,329,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
-        <Button x:Name="Remove" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Margin="240,329,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
-        <ListView x:Name="OrderListView" ItemsSource="{DynamicResource CurrentOrder}" Grid.Column="1" HorizontalAlignment="Left" Height="275" Margin="34,29,0,0" VerticalAlignment="Top" Width="223">
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="5,329,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="20" Command ="{Binding DoOrderCommand}" CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
+        <Button x:Name="ChangeButton" Content="Change" Grid.Column="1" HorizontalAlignment="Left" Margin="118,329,0,0" VerticalAlignment="Top" Width="75" Height="20" Command="{Binding ChangeOrderCommand}" CommandParameter="{Binding ElementName=OrderListView, Path=SelectedIndex}"/>
+        <Button x:Name="Remove" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Margin="240,329,0,0" VerticalAlignment="Top" Width="75" Height="20" Command ="{Binding DeleteCurrentOrderItemCommand}"  CommandParameter="{Binding ElementName=OrderListView, Path=SelectedIndex}"/>
+        <ListView x:Name="OrderListView" ItemsSource="{Binding cashRegister.CurrentSushiOrder.Order}" Grid.Column="1" HorizontalAlignment="Left" Height="275" Margin="34,29,0,0" VerticalAlignment="Top" Width="223">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name"
-                            DisplayMemberBinding="{Binding Key.Name}" />
+                            DisplayMemberBinding="{Binding Value.Name}" />
                     <GridViewColumn Header="Price"
-                            DisplayMemberBinding="{Binding Key.Price}" />
+                            DisplayMemberBinding="{Binding Value.Price}" />
                     <GridViewColumn Header="Quantity"
-                            DisplayMemberBinding="{Binding Value}" />
+                            DisplayMemberBinding="{Binding Quantity}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -48,7 +48,5 @@
             <Button Margin="10" Width="87" Content="Ok" Command="{Binding MovePriceCommand}"  CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
             <Button Margin="10" Width="87" Content="Cancel" Command="{Binding CancelEnteringPriceCommand}"   CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
         </StackPanel>
-
-
     </Grid>
 </Window>
