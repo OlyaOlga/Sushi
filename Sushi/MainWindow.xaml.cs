@@ -34,7 +34,6 @@ namespace Sushi
         {
             OrderSushi sushi = new OrderSushi();
             sushi.DataContext = this.DataContext;
-         //   sushi.InitializeChosenElements();
             currentView.orderSushi = sushi;
             sushi.ShowDialog();
         }

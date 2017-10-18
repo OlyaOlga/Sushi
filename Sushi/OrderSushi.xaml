@@ -48,5 +48,9 @@
             <Button Margin="10" Width="87" Content="Ok" Command="{Binding MovePriceCommand}"  CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
             <Button Margin="10" Width="87" Content="Cancel" Command="{Binding CancelEnteringPriceCommand}"   CommandParameter="{Binding ElementName=listView, Path=SelectedIndex}"/>
         </StackPanel>
+        <Button x:Name="SaveButton" Content="Ok" Grid.Column="1" HorizontalAlignment="Left"
+                Margin="315,438,0,0" VerticalAlignment="Top" Width="75" Command = "{Binding SaveAllCommand}"/>
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left"
+                Margin="429,438,0,0" VerticalAlignment="Top" Width="75" Command = "{Binding CancelAllCommand}"/>
     </Grid>
 </Window>

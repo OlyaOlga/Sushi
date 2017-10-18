@@ -27,6 +27,8 @@ namespace Sushi
             DoOrderCommand = new MenuCommand(this, AddCurrentItemToOrder);
             DeleteCurrentOrderItemCommand = new MenuCommand(this, DeleteCurrentOrderItem);
             ChangeOrderCommand = new MenuCommand(this, ChangeCurrentOrder);
+            SaveAllCommand = new MyInputWindowCommand(SaveAll);
+            CancelAllCommand = new MyInputWindowCommand(CancelAll);
         }
 
         public ICommand MenuChangeItemPriceCommand { get; }
@@ -43,7 +45,10 @@ namespace Sushi
 
         public ICommand DeleteCurrentOrderItemCommand { get; }
 
+        public ICommand SaveAllCommand { get; }
 
+        public ICommand CancelAllCommand { get; }
+    
         public void RemoveMenuItem(int index)
         {
             cashRegister.Menu.RemoveItem(cashRegister.Menu.AllPossibleItems[index]);
@@ -81,11 +86,11 @@ namespace Sushi
             {
                 SushiItem itemToAdd = new SushiItem(cashRegister.Menu.AllPossibleItems[index].Name,
                 cashRegister.Menu.AllPossibleItems[index].Price);
-                cashRegister.CurrentSushiOrder.Order.Add(new OrderEntity<SushiItem>(itemToAdd, (uint)Q));
+                cashRegister.CurrentSushiOrder.OrderSomething(itemToAdd,(uint)Q);
             }
         }
 
-        public uint? Q { get; set; }
+        public uint? Q { get; set; }//quantity
 
         public void DeleteCurrentOrderItem(int index)
         {
@@ -101,6 +106,18 @@ namespace Sushi
             {
                 cashRegister.CurrentSushiOrder.ChangeOrder(cashRegister.CurrentSushiOrder.Order[index], (uint)Q);
             }
+        }
+
+        public void SaveAll()
+        {
+            cashRegister.SaveData(cashRegister.CurrentSushiOrder);
+            CancelAll();
+        }
+
+        public void CancelAll()
+        {
+            cashRegister.ClearData(cashRegister.CurrentSushiOrder);
+            orderSushi.Close();
         }
     }
 }

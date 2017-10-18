@@ -23,7 +23,7 @@ namespace ConsoleSushi
             }
             return resIndex;
         }
-        public double TotalSum { get; private set; } = 0;
+        public double TotalSum { get; set; } = 0;
         public ObservableCollection<OrderEntity<T>> Order { get; }
         public CurrentOrder()
         {
@@ -42,7 +42,7 @@ namespace ConsoleSushi
             }
             else
             {
-                ChangeOrder(Order[elementIndex], quantity);
+                ChangeOrder(Order[elementIndex], Order[elementIndex].Quantity + quantity);
             }
         }
 

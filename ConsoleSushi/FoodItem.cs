@@ -23,7 +23,16 @@ namespace ConsoleSushi
                 _name = value;
                 OnPropertyChanged("Name");
             } }
-        public double Price { get; private set; }
+
+        public double Price
+        {
+            get { return _price; }
+            private set
+            {
+                _price = value;
+                OnPropertyChanged("Price");
+            }
+        }
 
         public FoodItem()
         {
