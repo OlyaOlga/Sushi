@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sushi"
         mc:Ignorable="d"
-        Title="InputValueWindow" Height="300" Width="300">
+        Title="Input Value" Height="300" Width="300" ResizeMode="NoResize">
     <Window.Resources>
         <local:StringIntConverter x:Key="StringIntConverter"></local:StringIntConverter>
     </Window.Resources>

@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:Sushi"
         xmlns:Properties="clr-namespace:Sushi.Properties" x:Class="Sushi.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Sushi" Height="350" Width="525" ResizeMode="NoResize">
     <Grid>
+        <Image Source="sushi.jpg"></Image>
         <Button x:Name="AcceptOrder" Content="Accept Order" HorizontalAlignment="Left" Margin="330,250,0,0" VerticalAlignment="Top" Width="115" Height="43" Click="DoOrder_Click"/>
         <Button x:Name="BuyProducts" Content="Buy Products" HorizontalAlignment="Left" Margin="51,250,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <Label x:Name="label" Content="Total Sum" HorizontalAlignment="Left" Margin="125,34,0,0" VerticalAlignment="Top" Height="57" Width="231" FontSize="40"/>
-        <Label x:Name="SumLabel" Content="{Binding cashRegister.TotalSum}" HorizontalAlignment="Left" Margin="151,122,0,0" VerticalAlignment="Top" Height="61" Width="135"/>
+        <Label x:Name="label" Content="Total Sum:" HorizontalAlignment="Left" Margin="73,10,0,0" VerticalAlignment="Top" Height="61" Width="231" FontSize="40"/>
+        <Label x:Name="SumLabel" Content="{Binding cashRegister.TotalSum}" HorizontalAlignment="Left" Margin="276,10,0,0" VerticalAlignment="Top" Height="61" Width="135" FontSize="40"/>
 
     </Grid>
 </Window>
