@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiTest", "SushiTest\Sush
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiEntityFramework", "SushiEntityFramework\SushiEntityFramework.csproj", "{915BB619-D934-44CD-8F80-3C661422E33C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SushiView", "SushiView\SushiView.csproj", "{061FFAB6-2C02-46A9-9B85-AFB65FC09D6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{915BB619-D934-44CD-8F80-3C661422E33C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{915BB619-D934-44CD-8F80-3C661422E33C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{915BB619-D934-44CD-8F80-3C661422E33C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{061FFAB6-2C02-46A9-9B85-AFB65FC09D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{061FFAB6-2C02-46A9-9B85-AFB65FC09D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{061FFAB6-2C02-46A9-9B85-AFB65FC09D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{061FFAB6-2C02-46A9-9B85-AFB65FC09D6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

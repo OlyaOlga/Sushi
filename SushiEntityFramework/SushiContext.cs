@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace SushiEntityFramework
 {
-    class SushiContext:
+    public class SushiContext:
         DbContext
     {
         public DbSet<SushiItem> Menu { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

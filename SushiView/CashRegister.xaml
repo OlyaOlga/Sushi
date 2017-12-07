@@ -1,0 +1,56 @@
+﻿<Window x:Class="SushiView.CashRegister"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SushiView"
+        mc:Ignorable="d"
+      Title="OrderSushi" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="MenuListView" SelectionMode="Single" 
+                  HorizontalAlignment="Left" Height="280" Width="300" VerticalAlignment="Top" Margin="50,20,50,0"
+                 Grid.Row="0" Grid.Column="0"  ItemsSource="{Binding MenuList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header ="Name" Width="190" DisplayMemberBinding="{Binding Name }"/>
+                    <GridViewColumn Header ="Price"  Width="100" DisplayMemberBinding="{Binding Price}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <ListView x:Name="OrderListView" ItemsSource="{Binding CurrentOrder}" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Left" Height="280" Width="300" VerticalAlignment="Top" Margin="50,20,50,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"
+                            DisplayMemberBinding="{Binding SushiName}" Width="190"/>
+                    <GridViewColumn Header="Price"
+                            DisplayMemberBinding="{Binding SushiPrice}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2" Margin="50,0,50,0">
+            <Button x:Name="ChooseElement" Content="Choose Sushi" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Width="75" Height="20" Command ="{Binding AddOrderItemCommand}"
+                CommandParameter="{Binding ElementName=MenuListView, Path=SelectedIndex}" Margin="10,10,15,0"/>
+            <Button x:Name="SaveButton" Content="Ok"  HorizontalAlignment="Left"
+                 Margin="10,10,10,0" VerticalAlignment="Top" Width="75" Height="20" Command = "{Binding SaveAllCommand}"/>
+            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left"
+                Margin="10,10,10,0" VerticalAlignment="Top" Width="75" Height="20" Command = "{Binding CancelAllCommand}" />
+        </StackPanel>
+
+
+    </Grid>
+</Window>

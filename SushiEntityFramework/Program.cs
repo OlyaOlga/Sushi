@@ -10,24 +10,23 @@ namespace SushiEntityFramework
     {
         static void Main(string[] args)
         {
-           
-            List<SushiItem> menuSushi = new List<SushiItem>();
-            using (var db = new SushiContext())
+            /*
+             * "Student1 Name"             * 
+            *insert new value to database
+             * 
+             * using (var db = new StudentContext())
             {
-                var sushi = from s in db.Menu
-                    select s;
-                foreach (var item in sushi)
-                {
-                    menuSushi.Add(item);
-                    //Console.WriteLine((item as SushiItem).Name);
-                }
-            }
+                var student = new Student() {Name = "Student1 Name" };
+                var subjMath = new Subject() {Name = "math"};
+                var subjLang = new Subject() {Name = "eng"};
+                student.Subjects.Add(subjMath);
+                student.Subjects.Add(subjLang);
+                db.Students.Add(student);
+                db.SaveChanges(); 
+            }*/
 
-            foreach (var item  in menuSushi)
-            {
-                Console.WriteLine(item.Name);
-            }
-                Console.ReadKey();
+           
+            Console.ReadKey();
         }
     }
 }
