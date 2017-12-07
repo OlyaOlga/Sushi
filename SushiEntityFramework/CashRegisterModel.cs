@@ -8,48 +8,32 @@ namespace SushiEntityFramework
 {
     public class CashRegisterModel
     {
-        public SushiContext SushiContext { get; set; }
+        public UnitOfWork UnitOfWork { get; set; }
 
         public CashRegisterModel()
         {
-            Console.WriteLine();
+            UnitOfWork = new UnitOfWork();
         }
         public List<SushiItem> ReadMenu()
         {
-            List<SushiItem> menuSushi = new List<SushiItem>();
-            using (var db = new SushiContext())
-            {
-                var sushi = from s in db.Menu
-                            select s;
-                foreach (var item in sushi)
-                {
-                    menuSushi.Add(item);
-                }
-            }
-            return menuSushi;
+            return UnitOfWork.SushiRepositoriy.GetSushiItems().ToList(); 
         }
 
         public void AddListOfItems(List<Order> sushiItems)
         {
-            using (var context = new SushiContext())
+            for (int i = 0; i < sushiItems.Count; ++i)
             {
-                for (int i = 0; i < sushiItems.Count; ++i)
-                { 
-                    context.Orders.Add(new Order {SushiName = sushiItems[i].SushiName, SushiPrice = sushiItems[i].SushiPrice});
-                }
-                context.SaveChanges();
+                UnitOfWork.OrderRepository.InsertOrder(new Order { SushiName = sushiItems[i].SushiName, SushiPrice = sushiItems[i].SushiPrice });
             }
+            UnitOfWork.Save();
         }
 
         public double CountTotalSum()
         {
             double res;
-            using (var db = new SushiContext())
-            {
-                var sushi = (from s in db.Orders
-                            select s).Sum(s=> s.SushiPrice);
-                res = sushi;
-            }
+            var sushi = (from s in UnitOfWork.OrderRepository.GetOrders()
+                         select s).Sum(s => s.SushiPrice);
+            res = sushi;
             return res;
         }
     }
